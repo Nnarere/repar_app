@@ -1,0 +1,52 @@
+.welcome{
+    padding: 10px;
+}
+
+.repartes{
+    color: #181D81;
+    background-color: none;
+}
+
+.btn_repartes{
+    background-color: #37DBA9!important;
+    color:#181D81!important;;
+}
+.title{
+    margin: 5px 0px 10px 0px;
+}
+
+.subtitle{
+    margin: 5px 0px 10px 0px;
+}
+
+.register{
+    margin-top: 5px;
+    border: 1px rgb(240, 240, 240) solid;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.login{
+    margin-top: 5px;
+    border: 1px rgb(240, 240, 240) solid;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.row{
+    justify-content: space-around;
+}
+
+.find{
+    margin-top: 5px;
+    border: 1px rgb(240, 240, 240) solid;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.add{
+    margin-top: 5px;
+    border: 1px rgb(240, 240, 240) solid;
+    border-radius: 5px;
+    padding: 20px;
+}

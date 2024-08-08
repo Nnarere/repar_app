@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Repartes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="welcome row">
+        <div class="col-11">
+            <h1 class="title">Welcome {{user.full_name}} to <strong class="repartes">Repartes</strong>'s Vehicle Data
+                Base</h1>
+        </div>
+        <div class="col-1 mt-2">
+            <form action="/logout" method="post">
+                <input class="btn btn-danger" type="submit" value="Logout"></input>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <!--Encontrar Vehiculo por Patente y por VIN-->
+        <div class="col-6 find">
+            <div>
+                <h2>Find a vehicle's information</h2>
+                <form class="d-flex" role="search" method="post" action="/findByPlate">
+                    <div class="mt-3">
+                        <label for="plate">Search by Plate</label>
+                        <input class="plate" type="search" placeholder="ABCD12 / AV1234" aria-label="Search"
+                            name="plate">
+                        <input class="btn btn-sm btn_repartes" type="submit" value="Search">
+                    </div>
+                </form>
+                <form class="d-flex" role="search" method="post" action="/findByVIN">
+                    <div class="mt-3">
+                        <label for="vin">Search by VIN</label>
+                        <input class="vin" type="search" placeholder="VIN Number" aria-label="Search" name="vin">
+                        <input class="btn btn-sm btn_repartes" type="submit" value="Search">
+                    </div>
+                </form>
+            </div>
+            <div class="mt-3">
+                <a href="{{ url_for('all_vehicles') }}">Vehicle's List</a>
+            </div>
+        </div>
+
+        <!--Añadir Vehiculo-->
+        <div class="col-5 mt-1 add">
+            <h2>Add a new vehicle's information</h2>
+            {% with messages = get_flashed_messages(category_filter=['add_vehicle']) %}
+            {% if messages %}
+            <div class="alert alert-danger">
+                {% for message in messages %}
+                <p>{{message}}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% endwith %}
+            <form action="/add" method="post" id="addForm">
+                <div class="mb-3">
+                    <label for="plate">Plate</label>
+                    <input class="plate form-control" type="text" placeholder="ABCD12 ó AV1234" name="plate">
+                </div>
+                <div class="mb-3">
+                    <label for="plate">Country</label>
+                    <select name="country" id="country" class="form-select">
+                        <option value="CHL">Chile</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="brand_name">Brand name</label>
+                    <select id="brand_name" name="brand_name" class="form-select">
+                        <option value="Acura">Acura</option>
+                        <option value="Alfa Romeo">Alfa Romeo</option>
+                        <option value="Aston Martin">Aston Martin</option>
+                        <option value="Audi">Audi</option>
+                        <option value="Bentley">Bentley</option>
+                        <option value="BMW">BMW</option>
+                        <option value="Bugatti">Bugatti</option>
+                        <option value="Buick">Buick</option>
+                        <option value="BYD">BYD</option>
+                        <option value="Cadillac">Cadillac</option>
+                        <option value="Changan">Changan</option>
+                        <option value="Chery">Chery</option>
+                        <option value="Chevrolet">Chevrolet</option>
+                        <option value="Chrysler">Chrysler</option>
+                        <option value="Citroën">Citroën</option>
+                        <option value="Dacia">Dacia</option>
+                        <option value="Daewoo">Daewoo</option>
+                        <option value="Daihatsu">Daihatsu</option>
+                        <option value="Dodge">Dodge</option>
+                        <option value="Dongfeng">Dongfeng</option>
+                        <option value="Ferrari">Ferrari</option>
+                        <option value="Fiat">Fiat</option>
+                        <option value="Fisker">Fisker</option>
+                        <option value="Ford">Ford</option>
+                        <option value="Geely">Geely</option>
+                        <option value="Genesis">Genesis</option>
+                        <option value="GMC">GMC</option>
+                        <option value="Great Wall">Great Wall</option>
+                        <option value="Haval">Haval</option>
+                        <option value="Honda">Honda</option>
+                        <option value="Hyundai">Hyundai</option>
+                        <option value="Infiniti">Infiniti</option>
+                        <option value="Isuzu">Isuzu</option>
+                        <option value="Jaguar">Jaguar</option>
+                        <option value="Jeep">Jeep</option>
+                        <option value="JMC">JMC</option>
+                        <option value="Kia">Kia</option>
+                        <option value="Koenigsegg">Koenigsegg</option>
+                        <option value="Lamborghini">Lamborghini</option>
+                        <option value="Lancia">Lancia</option>
+                        <option value="Land Rover">Land Rover</option>
+                        <option value="Lexus">Lexus</option>
+                        <option value="Lincoln">Lincoln</option>
+                        <option value="Lotus">Lotus</option>
+                        <option value="Lynk & Co">Lynk & Co</option>
+                        <option value="Maserati">Maserati</option>
+                        <option value="Mazda">Mazda</option>
+                        <option value="McLaren">McLaren</option>
+                        <option value="Mercedes-Benz">Mercedes-Benz</option>
+                        <option value="MG">MG</option>
+                        <option value="Mini">Mini</option>
+                        <option value="Mitsubishi">Mitsubishi</option>
+                        <option value="Nio">Nio</option>
+                        <option value="Nissan">Nissan</option>
+                        <option value="Pagani">Pagani</option>
+                        <option value="Peugeot">Peugeot</option>
+                        <option value="Porsche">Porsche</option>
+                        <option value="Ram">Ram</option>
+                        <option value="Renault">Renault</option>
+                        <option value="Roewe">Roewe</option>
+                        <option value="Rolls-Royce">Rolls-Royce</option>
+                        <option value="Saab">Saab</option>
+                        <option value="SEAT">SEAT</option>
+                        <option value="Skoda">Skoda</option>
+                        <option value="SsangYong">SsangYong</option>
+                        <option value="Subaru">Subaru</option>
+                        <option value="Suzuki">Suzuki</option>
+                        <option value="Tata">Tata</option>
+                        <option value="Tesla">Tesla</option>
+                        <option value="Toyota">Toyota</option>
+                        <option value="Volkswagen">Volkswagen</option>
+                        <option value="Volvo">Volvo</option>
+                        <option value="Wuling">Wuling</option>
+                        <option value="Xpeng">Xpeng</option>
+                        <option value="Zotye">Zotye</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="model">Model</label>
+                    <input class="model form-control" type="text" placeholder="Accent" name="model">
+                </div>
+                <div class="mb-3">
+                    <label for="version">Version</label>
+                    <input class="version form-control" type="text" placeholder="HCI" name="version">
+                </div>
+                <div class="mb-3">
+                    <label for="displacement">Displacement</label>
+                    <input class="displacement form-control" type="text" placeholder="1.4" name="displacement">
+                </div>
+                <div class="mb-3">
+                    <label for="year">Year</label>
+                    <input class="year form-control" type="number" placeholder="2024" name="year">
+                </div>
+                <div class="mb-3">
+                    <label for="vin">VIN</label>
+                    <input class="vin form-control" type="text" placeholder="AB12CD122345465CF546" name="vin">
+                </div>
+                <div class="mb-3">
+                    <label for="motor_number">Motor Number</label>
+                    <input class="motor_number form-control" type="text" placeholder="ATCV2255555AS555541"
+                        name="motor_number">
+                </div>
+                <input type="hidden" name="user_id" value="{{session[" user_id"]}}">
+                <button class="btn btn_repartes" type="submit" id="addButton">Add</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>
