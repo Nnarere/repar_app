@@ -1,13 +1,10 @@
 DESCRIPCIÓN DEL PROYECTO
 
-REPARTES es una aplicación desarrollada para encontrar información de vehículos utilizando el código de su patente o el número VIN
+REPAR es una aplicación desarrollada para encontrar información de vehículos utilizando el código de su patente o el número VIN
 
 TECNOLOGÍAS UTILIZADAS
-Frontend:
-Bootstrap. Elegí Bootstrap por su capacidad para facilitar y acelerar el desarrollo de interfaces responsivas y modernas.
-
-Backend:
-Flask y MySQL. Flask es una opción minimalista y simple, ideal para los requisitos del proyecto, mientras que MySQL es una base de datos que manejo con comodidad.
+Frontend: Bootstrap.
+Backend: Flask y MySQL.
 
 FUNCIONALIDADES
 
@@ -18,7 +15,7 @@ Búsqueda de Vehículos:
 Página para buscar vehículos por placa patente y número VIN.
 
 Gestión de Vehículos: 
-Formularios para añadir nuevos vehículos a la base de datos. No se implementó la opción de modificar registros existentes ya que no fue solicitada.
+Formularios para añadir nuevos vehículos a la base de datos.
 
 Listado de Vehículos:
 Página que muestra todos los vehículos añadidos.
@@ -52,5 +49,3 @@ Para ejecutar la aplicación en sus computadoras, siga estos pasos:
 NOTA ADICIONALES
 
 Asegúrese de configurar correctamente la conexión a la base de datos MySQL en su archivo de configuración de Flask (debe cambiar el usuario y contraseña del archivo mysqlconnection.py de la carpeta config en flask_app, con el usuario y contraseña de su MYSQL).
-
-Para cualquier consulta o problema, puede contactarme a mi whatsapp +56975227012 o a mi correo marevamardoness@gmail.com
